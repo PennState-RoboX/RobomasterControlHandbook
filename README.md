@@ -1,3 +1,33 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [RoboX 电控系统上手指南](#robox-%E7%94%B5%E6%8E%A7%E7%B3%BB%E7%BB%9F%E4%B8%8A%E6%89%8B%E6%8C%87%E5%8D%97)
+- [Introduction](#introduction)
+- [概念部分](#%E6%A6%82%E5%BF%B5%E9%83%A8%E5%88%86)
+  - [基础概念](#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5)
+    - [ROBOMASTER开发版](#robomaster%E5%BC%80%E5%8F%91%E7%89%88)
+    - [STM32](#stm32)
+    - [微控制器（MCU）和CPU区别](#%E5%BE%AE%E6%8E%A7%E5%88%B6%E5%99%A8mcu%E5%92%8Ccpu%E5%8C%BA%E5%88%AB)
+    - [PID](#pid)
+    - [PWM](#pwm)
+    - [BLDC电机以及电调](#bldc%E7%94%B5%E6%9C%BA%E4%BB%A5%E5%8F%8A%E7%94%B5%E8%B0%83)
+  - [进阶概念](#%E8%BF%9B%E9%98%B6%E6%A6%82%E5%BF%B5)
+    - [GPIO](#gpio)
+    - [FIFO](#fifo)
+    - [寄存器](#%E5%AF%84%E5%AD%98%E5%99%A8)
+    - [DMA](#dma)
+    - [多任务处理](#%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%A4%84%E7%90%86)
+  - [通讯协议](#%E9%80%9A%E8%AE%AF%E5%8D%8F%E8%AE%AE)
+    - [串口/UART](#%E4%B8%B2%E5%8F%A3uart)
+    - [CAN](#can)
+    - [I2C](#i2c)
+    - [自定义协议](#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%8F%E8%AE%AE)
+  - [代码规范](#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83)
+  - [未来任务](#%E6%9C%AA%E6%9D%A5%E4%BB%BB%E5%8A%A1)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # RoboX 电控系统上手指南
 [toc]
 # Introduction
