@@ -85,6 +85,7 @@ PWM是Pulse Width Modul ation的缩写是一种调制方式。PWM信号为数字
 这部分主要讲了关于嵌入式开发的一些概念。开发新功能时可同时参考芯片官方手册以及开发版原理图。A 版使用的STM32F427IIH6手册在[这里](https://www.st.com/resource/en/reference_manual/rm0090-stm32f405415-stm32f407417-stm32f427437-and-stm32f429439-advanced-armbased-32bit-mcus-stmicroelectronics.pdf)  [datasheet](https://www.st.com/resource/zh/datasheet/stm32f427ii.pdf)
 
 ### GPIO
+
 GEneral-Purpose input/output （GPIO） 是通用型输入输出的简称。引脚可以自由的提供给使用者自由使用。我们可以通过写入**寄存器**来控制引脚电平。 对于一些特殊功能我们可以通过写入专用寄存器来控制。
 
 ### IO复用 
@@ -93,21 +94,25 @@ GEneral-Purpose input/output （GPIO） 是通用型输入输出的简称。引�
 端口服用映射示意图：
 ![io](IO复用.png)
 STM32F4 中 GPIO由端口A排列到端口K，每个端口内部也对应有若干对应的引脚。例如 PIN：E7对应了E端口pin7.引脚映射我们可以通过查询原理图以及芯片datasheet取得。设置复用时我们首先需要设置复用寄存器并且设置引脚的init structure 然后使用GPIO_Init函数来初始化引脚。 示例代码：
-`   
-GPIO_PinAFConfig(GPIOE,GPIO_PinSource7,GPIO_AF_UART7); //GPIOE7复用为USART7
-	GPIO_PinAFConfig(GPIOE,GPIO_PinSource8,GPIO_AF_UART7); //GPIOE8复用为USART7
-	//USART3端口配置
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_8; //GPIOE7与GPIOE8
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;//复用功能
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	//速度50MHz
-	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP; //推挽复用输出
-	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP; //上拉
-	GPIO_Init(GPIOE,&GPIO_InitStructure); //初始化PE7，PE8
-`
+
+> GPIO_PinAFConfig(GPIOE,GPIO_PinSource7,GPIO_AF_UART7); //GPIOE7复用为USART7
+> GPIO_PinAFConfig(GPIOE,GPIO_PinSource8,GPIO_AF_UART7); //GPIOE8复用为USART7
+> //USART3端口配置
+> GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_8; //GPIOE7与GPIOE8
+> GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;//复用功能
+> GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	//速度50MHz
+> GPIO_InitStructure.GPIO_OType = GPIO_OType_PP; //推挽复用输出
+> GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP; //上拉
+> GPIO_Init(GPIOE,&GPIO_InitStructure); //初始化PE7，PE8
+
 
 ### FIFO
 
+FIFO是First In First Out 先入先出的缩写。首先到达FIFO的数据将会首先读取出来。在MCU内一般用作数据缓冲区。比如在**串口**进行接收的时候，我们可以先将接收到的数据存到FIFO内，当MCU进行读取操作时再读取FIFO内数据。 ![fifo](Fifo_queue.png)
+
 ### 寄存器
+
+
 
 ### DMA
 
