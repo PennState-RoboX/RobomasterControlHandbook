@@ -2,7 +2,13 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [RoboX 电控系统上手指南](#robox-电控系统上手指南)
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+<!-- 更新目录需要把原始目录移动到文档开头 并运行 doctoc README.md 若未安装doctoc 可使用npm 安装命令： npm install doctoc -g   -->
+# RoboMaster 电控系统上手指南
+施工中👷预计8月16号左右完工。。。。
+- [RoboMaster 电控系统上手指南](#robomaster-电控系统上手指南)
 - [Introduction](#introduction)
 - [概念部分](#概念部分)
   - [基础概念](#基础概念)
@@ -27,12 +33,6 @@
   - [代码规范](#代码规范)
   - [未来任务](#未来任务)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-
-<!-- 更新目录需要把原始目录移动到文档开头 并运行 doctoc README.md 若未安装doctoc 可使用npm 安装命令： npm install doctoc -g   -->
-# RoboX 电控系统上手指南
-[toc]
 # Introduction
 
 这份指南适合对嵌入式开发没有经验但是有一定电子电路基础的同学。这份指南会解释一些常见概念以及会包含嵌入式开发的小技巧。
