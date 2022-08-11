@@ -16,7 +16,7 @@
     - [GPIO](#gpio)
     - [IO复用](#io复用)
     - [FIFO](#fifo)
-    - [寄存器](#寄存器)
+    - [寄存器（register）](#寄存器register)
     - [DMA](#dma)
     - [多任务处理](#多任务处理)
   - [通讯协议](#通讯协议)
@@ -62,7 +62,9 @@ PID是最常见的控制算法，他是比例（propotion）积分（intergratio
 
 ### PWM
 
-PWM是Pulse Width Modul ation的缩写是一种调制方式。PWM信号为数字信号，在同一个时间只有打开（1）和关闭（0）两种信号。 通过调整1和0的时间比例，这样我们就可以使用数字信号表示模拟数值。PWM信号使用占空比（1 和 0 信号的比例）来表示信号的大小。目前我们的子弹发射电机是由PWM进行控制的. 
+PWM是Pulse Width Modul ation的缩写是一种调制方式。PWM信号为数字信号，在同一个时间只有打开（1）和关闭（0）两种信号。 通过调整1和0的时间比例，这样我们就可以使用数字信号表示模拟数值。PWM信号使用占空比（1 和 0 信号的比例）来表示信号的大小。目前我们的子弹发射电机是由PWM进行控制的.
+
+
 ![PWM IMG](pwm.gif)
 
 ### BLDC电机以及电调
@@ -92,7 +94,9 @@ GEneral-Purpose input/output （GPIO） 是通用型输入输出的简称。引�
 
 由于芯片内部资源远多于引脚数目，我们需要通过选择器将内部资源映射到引脚上面。这个过程就是IO复用。
 端口服用映射示意图：
+
 ![io](IO复用.png)
+
 STM32F4 中 GPIO由端口A排列到端口K，每个端口内部也对应有若干对应的引脚。例如 PIN：E7对应了E端口pin7.引脚映射我们可以通过查询原理图以及芯片datasheet取得。设置复用时我们首先需要设置复用寄存器并且设置引脚的init structure 然后使用GPIO_Init函数来初始化引脚。 示例代码：
 
 > GPIO_PinAFConfig(GPIOE,GPIO_PinSource7,GPIO_AF_UART7); //GPIOE7复用为USART7
@@ -108,19 +112,25 @@ STM32F4 中 GPIO由端口A排列到端口K，每个端口内部也对应有若�
 
 ### FIFO
 
-FIFO是First In First Out 先入先出的缩写。首先到达FIFO的数据将会首先读取出来。在MCU内一般用作数据缓冲区。比如在**串口**进行接收的时候，我们可以先将接收到的数据存到FIFO内，当MCU进行读取操作时再读取FIFO内数据。 ![fifo](Fifo_queue.png)
+FIFO是First In First Out 先入先出的缩写。首先到达FIFO的数据将会首先读取出来。在MCU内一般用作数据缓冲区。比如在**串口**进行接收的时候，我们可以先将接收到的数据存到FIFO内，当MCU进行读取操作时再读取FIFO内数据。
 
-### 寄存器
+ ![fifo](Fifo_queue.png)
 
+### 寄存器（register）
 
+寄存器是MCU内的高速记忆体，在计算机里一般用来存储临时数据。在使用IO资源时我们可以将需要的数据写入对应的专用寄存器。例如在UART通讯时，我们首先需要将需要发送的数据写入UART专用寄存器，UART模块将数据自动转坏为对应电平。
 
 ### DMA
 
+由于内存速度一般远远慢于CPU计算时间，为了节约在memory上面所花费的时间，Direct Memory Access （DMA）被开发出来了。DMA可允许不同模块直接访问内存地址。比如没有设置DMA时CAN总线数据将经过CPU，然后被写入CAN寄存器。配置DMA之后CAN数据可以直接写入CAN寄存器。
+
 ### 多任务处理
 
-- 轮询
-- 中断
-- RTOS
+由于CPU运算速度极快，在单一核心处理多任务时一般会采用time sharing的模式。即不同时间处理不同的任务。对于多任务处理一般会有三种方式。
+
+- **轮询（pooling）:** 轮询是最简单的多任务处理方式。程序会以规定频率以次执行不同任务。
+- **中断（interrrupt）:** 在处理异步任务时 IRO
+- **OS/RTOS:**
 
 ## 通讯协议
 
